@@ -1,45 +1,37 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React from "react";
+import { NestedRoutes } from "andculturecode-javascript-react";
+import {
+  BrowserRouter as Router,
+  Switch,
+} from "react-router-dom";
+import { routes } from "routes";
+import { siteMap } from "sitemap";
+import { CoreUtils } from "andculturecode-javascript-core";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const routeArray = CoreUtils.objectToArray(routes);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <Router>
+      <React.Fragment>
+        {/*
+        ------------------------------------------------------------------------------------------
+        Main Content
+        ------------------------------------------------------------------------------------------
+        */}
+        <Switch>
+            <NestedRoutes
+                isAuthenticated={false}
+                redirectToIfNotFound={siteMap.errors.notFound}
+                redirectToIfUnauthenticated={siteMap.errors.accessDenied}
+                routes={routeArray}
+            />
+        </Switch>
+      </React.Fragment>
+    </Router>
   )
-}
+};
 
 export default App
