@@ -9,6 +9,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "formik": "^2.2.6",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
