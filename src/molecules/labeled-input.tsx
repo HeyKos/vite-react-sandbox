@@ -9,8 +9,7 @@ export interface LabeledInputProperties {
     placeholderText: string,
 }
 
-const LabeledInput: React.FC<LabeledInputProperties> = (props) => {
-
+export const LabeledInput: React.FC<LabeledInputProperties> = (props) => {
     return (
         <div className="form-group">
             <label
@@ -27,5 +26,3 @@ const LabeledInput: React.FC<LabeledInputProperties> = (props) => {
         </div>
     );
 };
-
-export default LabeledInput;

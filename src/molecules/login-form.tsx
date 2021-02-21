@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import LabeledInput from "./labeled-input";
+import { LabeledInput } from "molecules/labeled-input";
 
 export interface LoginFormData {
     email: string;
