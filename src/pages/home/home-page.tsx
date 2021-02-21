@@ -1,31 +1,26 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import firebase from "firebase-init";
+import "firebase/firestore";
 
-// -----------------------------------------------------------------------------------------
-// #region Intefaces
-// -----------------------------------------------------------------------------------------
+const HomePage = () => {
+    const history = useHistory();
+    const handleClick = (event: any) => {
+        event.preventDefault();
+        firebase
+            .auth()
+            .signOut()
+            .then(res => {
+                history.push("/auth/login");
+            });
+    };
 
-interface HomePageProps {}
-
-// #endregion Intefaces
-
-// -----------------------------------------------------------------------------------------
-// #region Component
-// -----------------------------------------------------------------------------------------
-
-const HomePage: React.FC<HomePageProps> = (props: HomePageProps) => {
     return (
-        <React.Fragment>
+        <div style={{textAlign: 'center'}}>
             <h1>Home</h1>
-        </React.Fragment>
-    );
-};
-
-// #endregion Component
-
-// -----------------------------------------------------------------------------------------
-// #region Exports
-// -----------------------------------------------------------------------------------------
+            <button onClick={handleClick}>Logout</button>
+        </div>
+   );
+}
 
 export default HomePage;
-
-// #endregion Exports

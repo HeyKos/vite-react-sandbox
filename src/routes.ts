@@ -3,7 +3,9 @@ import { siteMap } from "sitemap";
 import ApplicationLayout from "templates/application-layout";
 import { RouteMap } from "andculturecode-javascript-react";
 import HomePage from "pages/home/home-page";
+import LoginPage from "pages/auth/login-page";
 import AccessDeniedPage from "pages/errors/access-denied-page";
+import SignUpPage from "pages/auth/signup-page";
 
 /*
 ---------------------------------------------------------------------------------------------
@@ -20,9 +22,24 @@ export const routes: RouteMap = {
         component: ApplicationLayout,
         path: siteMap.root,
         routes: {
+            // auth
+            login: {
+                authRequired: false,
+                component: LoginPage,
+                exact: true,
+                path: siteMap.auth.login,
+                routes: {},
+            },
+            signup: {
+                authRequired: false,
+                component: SignUpPage,
+                exact: true,
+                path: siteMap.auth.signup,
+                routes: {},
+            },
             // home
             home: {
-                authRequired: false,
+                authRequired: true,
                 component: HomePage,
                 exact: true,
                 path: siteMap.root,

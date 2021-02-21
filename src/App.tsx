@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NestedRoutes } from "andculturecode-javascript-react";
 import {
   BrowserRouter as Router,
@@ -9,28 +9,39 @@ import { siteMap } from "sitemap";
 import { CoreUtils } from "andculturecode-javascript-core";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'App.css'
+import { AuthContext, AuthProvider } from "AuthProvider";
 
 const App: React.FC = () => {
   const routeArray = CoreUtils.objectToArray(routes);
+  const {loadingAuthState, user} = useContext(AuthContext);
+
+  if (loadingAuthState) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   return (
-    <Router>
-      <React.Fragment>
-        {/*
-        ------------------------------------------------------------------------------------------
-        Main Content
-        ------------------------------------------------------------------------------------------
-        */}
-        <Switch>
-            <NestedRoutes
-                isAuthenticated={false}
+    <AuthProvider>
+      <Router>
+        <React.Fragment>
+          {/*
+          ------------------------------------------------------------------------------------------
+          Main Content
+          ------------------------------------------------------------------------------------------
+          */}
+          <Switch>
+              <NestedRoutes
+                isAuthenticated={user != null}
                 redirectToIfNotFound={siteMap.errors.notFound}
-                redirectToIfUnauthenticated={siteMap.errors.accessDenied}
-                routes={routeArray}
-            />
-        </Switch>
-      </React.Fragment>
-    </Router>
+                redirectToIfUnauthenticated={siteMap.auth.login}
+                routes={routeArray}/>
+          </Switch>
+        </React.Fragment>
+      </Router>
+    </AuthProvider>
   )
 };
 
