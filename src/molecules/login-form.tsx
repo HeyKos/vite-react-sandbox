@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import LabeledInput from "./labeled-input";
 
 export interface LoginFormData {
     email: string;
@@ -34,18 +35,20 @@ const LoginForm: React.FC<LoginFormProperties> = (props) => {
                 <Container>
                     <Row>
                         <Col>
-                            <div className="form-group">
-                                <label className="form-label" htmlFor="email">Email Address</label>
-                                <Field class="form-control" id="email" name="email" type="email" placeholder="Enter your email" />
-                            </div>
+                            <LabeledInput
+                                htmlId="email"
+                                inputType="email"
+                                label="Email Address"
+                                placeholderText="Enter your email" />
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <div className="form-group">
-                            <label className="form-label" htmlFor="password">Password</label>
-                                <Field class="form-control" id="password" name="password" type="password" placeholder="Enter your Password" />
-                            </div>
+                            <LabeledInput
+                                htmlId="password"
+                                inputType="password"
+                                label="Password"
+                                placeholderText="Enter your password" />
                         </Col>
                     </Row>
                     <Row>
