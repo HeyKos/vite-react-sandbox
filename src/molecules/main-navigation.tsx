@@ -3,7 +3,7 @@ import firebase from "firebase-init";
 import "firebase/firestore";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
-import './main-navigation.scss';
+import "./main-navigation.scss";
 
 export interface MainNavigationProperties {
     user?: firebase.User,
@@ -15,7 +15,7 @@ export const MainNavigation: React.FC<MainNavigationProperties> = (props) => {
     return (
         <Navbar className={`${COMPONENT_CLASS} d-flex`} bg="light" expand="lg" variant="light" sticky="top">
             <Navbar.Brand href="/" className="p-2">
-                <Image src="/src/assets/images/splash_image.png" alt="Train beers logo"/>
+                <Image src="src/assets/images/splash_image.png" alt="Train beers logo"/>
                 <span>Train Beers</span>
             </Navbar.Brand>
             <div className="ml-auto">

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NestedRoutes } from "andculturecode-javascript-react";
 import { siteMap } from "sitemap";
 import { AuthContext } from "AuthProvider";
-import './application-layout.scss';
+import "./application-layout.scss";
 import MainNavigation from "molecules/main-navigation";
 
 // -----------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
-import { LabeledInput, LabeledInputProperties } from './labeled-input';
+import React from "react";
+import { Story, Meta } from "@storybook/react/types-6-0";
+import { LabeledInput, LabeledInputProperties } from "./labeled-input";
 import { Formik } from "formik";
 
 export default {

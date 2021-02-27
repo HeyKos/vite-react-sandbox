@@ -7,8 +7,7 @@ import {
 import { routes } from "routes";
 import { siteMap } from "sitemap";
 import { CoreUtils } from "andculturecode-javascript-core";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'App.css'
+import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthContext, AuthProvider } from "AuthProvider";
 
 const App: React.FC = () => {
