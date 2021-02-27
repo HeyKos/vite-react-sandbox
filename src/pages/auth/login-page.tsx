@@ -22,18 +22,16 @@ const Login = () => {
 
     const handleClick = () => history.push(siteMap.auth.signup);
 
-    const handleSubmit = (values: LoginData) => {
-        firebase
+    const handleSubmit = async (values: LoginData) => {
+        const res = await firebase
             .auth()
             .signInWithEmailAndPassword(values.email, values.password)
-            .then(res => {
-                authContext.setUser(res);
-                history.push(siteMap.root);
-            })
             .catch(error => {
                 console.log(error.message);
-                alert(error.message);
             });
+
+        authContext.setUser(res);
+        history.push(siteMap.root);
     };
 
     return (
@@ -48,12 +46,12 @@ const Login = () => {
                 <Container>
                     <Row>
                         <Col>
-                            <p>Not logged in yet?</p>
+                            <p>Don't have an account yet?</p>
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Button onClick={handleClick}>SignUp</Button>
+                            <Button onClick={handleClick}>Sign Up</Button>
                         </Col>
                     </Row>
                 </Container>
