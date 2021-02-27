@@ -30,7 +30,12 @@ const Login = () => {
                 console.log(error.message);
             });
 
-        authContext.setUser(res);
+        if (res == null) {
+            return;
+        }
+
+        console.log("Logged in!", res.user);
+        authContext.setUser(res.user);
         history.push(siteMap.root);
     };
 
