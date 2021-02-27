@@ -33,7 +33,7 @@ const LoginForm: React.FC<LoginFormProperties> = (props) => {
             >
             <Form>
                 <Container>
-                    <Row>
+                    <Row xs={1} md={2} lg={2}>
                         <Col>
                             <LabeledInput
                                 htmlId="email"
@@ -41,8 +41,6 @@ const LoginForm: React.FC<LoginFormProperties> = (props) => {
                                 label="Email Address"
                                 placeholderText="Enter your email" />
                         </Col>
-                    </Row>
-                    <Row>
                         <Col>
                             <LabeledInput
                                 htmlId="password"
