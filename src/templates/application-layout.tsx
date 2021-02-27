@@ -18,20 +18,20 @@ const COMPONENT_CLASS = "c-application-layout";
 // ---------------------------------------------------------------------------------------------
 
 const ApplicationLayout: React.FC<any> = (props: any) => {
-    const authContext = useContext(AuthContext);
-    return (
-        <div className={COMPONENT_CLASS}>
-            <MainNavigation user={ authContext.user ?? undefined } />
-            <div className={`${COMPONENT_CLASS}__panel`}>
-                <NestedRoutes
-                    isAuthenticated={authContext.authenticated ?? false}
-                    redirectToIfNotFound={siteMap.errors.notFound}
-                    redirectToIfUnauthenticated={siteMap.auth.login}
-                    routes={props.routes}
-                />
-            </div>
-        </div>
-    );
+  const authContext = useContext(AuthContext);
+  return (
+    <div className={COMPONENT_CLASS}>
+      <MainNavigation user={authContext.user ?? undefined} />
+      <div className={`${COMPONENT_CLASS}__panel`}>
+        <NestedRoutes
+          isAuthenticated={authContext.authenticated ?? false}
+          redirectToIfNotFound={siteMap.errors.notFound}
+          redirectToIfUnauthenticated={siteMap.auth.login}
+          routes={props.routes}
+        />
+      </div>
+    </div>
+  );
 };
 
 // #endregion Component

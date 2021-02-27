@@ -12,57 +12,57 @@ import Col from "react-bootstrap/Col";
 import LoginForm from "molecules/login-form";
 
 interface LoginData {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 }
 
 const Login = () => {
-    const authContext = useContext(AuthContext);
-    const history = useHistory();
+  const authContext = useContext(AuthContext);
+  const history = useHistory();
 
-    const handleClick = () => history.push(siteMap.auth.signup);
+  const handleClick = () => history.push(siteMap.auth.signup);
 
-    const handleSubmit = async (values: LoginData) => {
-        const res = await firebase
-            .auth()
-            .signInWithEmailAndPassword(values.email, values.password)
-            .catch(error => {
-                console.log(error.message);
-            });
+  const handleSubmit = async (values: LoginData) => {
+    const res = await firebase
+      .auth()
+      .signInWithEmailAndPassword(values.email, values.password)
+      .catch((error) => {
+        console.log(error.message);
+      });
 
-        if (res == null) {
-            return;
-        }
+    if (res == null) {
+      return;
+    }
 
-        console.log("Logged in!", res.user);
-        authContext.setUser(res.user);
-        history.push(siteMap.root);
-    };
+    console.log("Logged in!", res.user);
+    authContext.setUser(res.user);
+    history.push(siteMap.root);
+  };
 
-    return (
+  return (
+    <Container>
+      <Row>
+        <Col>
+          <h1>Login</h1>
+        </Col>
+      </Row>
+      <Row>
+        <LoginForm onSubmit={handleSubmit} />
         <Container>
-            <Row>
-                <Col>
-                    <h1>Login</h1>
-                </Col>
-            </Row>
-            <Row>
-                <LoginForm onSubmit={handleSubmit} />
-                <Container>
-                    <Row>
-                        <Col>
-                            <p>Don't have an account yet?</p>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Button onClick={handleClick}>Sign Up</Button>
-                        </Col>
-                    </Row>
-                </Container>
-            </Row>
+          <Row>
+            <Col>
+              <p>Don't have an account yet?</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button onClick={handleClick}>Sign Up</Button>
+            </Col>
+          </Row>
         </Container>
-    );
+      </Row>
+    </Container>
+  );
 };
 
 export default Login;

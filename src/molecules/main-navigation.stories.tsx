@@ -8,4 +8,6 @@ export default {
   argTypes: {},
 } as Meta;
 
-export const MainNavigationTemplate: Story<MainNavigationProperties> = (args) => <MainNavigation {...args} />
+export const MainNavigationTemplate: Story<MainNavigationProperties> = (
+  args
+) => <MainNavigation {...args} />;

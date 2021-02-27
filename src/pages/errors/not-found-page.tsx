@@ -15,14 +15,14 @@ Component
 */
 
 const NotFoundPage: React.FC<NotFoundPageProps> = (
-    props: NotFoundPageProps
+  props: NotFoundPageProps
 ) => {
-    return (
-        <React.Fragment>
-            <h1>Error: 404 Not Found</h1>
-            <p>The requested resource was not found.</p>
-        </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      <h1>Error: 404 Not Found</h1>
+      <p>The requested resource was not found.</p>
+    </React.Fragment>
+  );
 };
 
 /*

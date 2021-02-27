@@ -9,23 +9,24 @@ export default {
   argTypes: {},
 } as Meta;
 
-const Template: Story<LabeledInputProperties> = (args) =>
-  <Formik onSubmit={() => {}} initialValues={{value: ""}}>
+const Template: Story<LabeledInputProperties> = (args) => (
+  <Formik onSubmit={() => {}} initialValues={{ value: "" }}>
     <LabeledInput {...args} />
   </Formik>
+);
 
 export const Email = Template.bind({});
 Email.args = {
-    htmlId: "email",
-    inputType: "email",
-    label: "Email Address",
-    placeholderText: "Enter your email",
+  htmlId: "email",
+  inputType: "email",
+  label: "Email Address",
+  placeholderText: "Enter your email",
 };
 
 export const Password = Template.bind({});
 Password.args = {
-    htmlId: "password",
-    inputType: "password",
-    label: "Password",
-    placeholderText: "Enter your password",
+  htmlId: "password",
+  inputType: "password",
+  label: "Password",
+  placeholderText: "Enter your password",
 };

@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 import { NestedRoutes } from "andculturecode-javascript-react";
-import {
-  BrowserRouter as Router,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { routes } from "routes";
 import { siteMap } from "sitemap";
 import { CoreUtils } from "andculturecode-javascript-core";
@@ -12,7 +9,7 @@ import { AuthContext, AuthProvider } from "AuthProvider";
 
 const App: React.FC = () => {
   const routeArray = CoreUtils.objectToArray(routes);
-  const {loadingAuthState, authenticated} = useContext(AuthContext);
+  const { loadingAuthState, authenticated } = useContext(AuthContext);
 
   if (loadingAuthState) {
     return (
@@ -32,16 +29,17 @@ const App: React.FC = () => {
           ------------------------------------------------------------------------------------------
           */}
           <Switch>
-              <NestedRoutes
-                isAuthenticated={authenticated ?? false}
-                redirectToIfNotFound={siteMap.errors.notFound}
-                redirectToIfUnauthenticated={siteMap.auth.login}
-                routes={routeArray} />
+            <NestedRoutes
+              isAuthenticated={authenticated ?? false}
+              redirectToIfNotFound={siteMap.errors.notFound}
+              redirectToIfUnauthenticated={siteMap.auth.login}
+              routes={routeArray}
+            />
           </Switch>
         </React.Fragment>
       </Router>
     </AuthProvider>
-  )
+  );
 };
 
-export default App
+export default App;
