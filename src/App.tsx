@@ -13,7 +13,7 @@ import { AuthContext, AuthProvider } from "AuthProvider";
 
 const App: React.FC = () => {
   const routeArray = CoreUtils.objectToArray(routes);
-  const {loadingAuthState, user} = useContext(AuthContext);
+  const {loadingAuthState, authenticated} = useContext(AuthContext);
 
   if (loadingAuthState) {
     return (
@@ -34,10 +34,10 @@ const App: React.FC = () => {
           */}
           <Switch>
               <NestedRoutes
-                isAuthenticated={user != null}
+                isAuthenticated={authenticated ?? false}
                 redirectToIfNotFound={siteMap.errors.notFound}
                 redirectToIfUnauthenticated={siteMap.auth.login}
-                routes={routeArray}/>
+                routes={routeArray} />
           </Switch>
         </React.Fragment>
       </Router>

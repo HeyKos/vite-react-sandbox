@@ -1,6 +1,7 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import { NestedRoutes } from "andculturecode-javascript-react";
 import { siteMap } from "sitemap";
+import { AuthContext } from "AuthProvider";
 
 // -----------------------------------------------------------------------------------------
 // #region Constants
@@ -15,14 +16,15 @@ const COMPONENT_CLASS = "c-application-layout";
 // ---------------------------------------------------------------------------------------------
 
 const ApplicationLayout: React.FC<any> = (props: any) => {
+    const authContext = useContext(AuthContext);
     return (
         <React.Fragment>
             <div className={COMPONENT_CLASS}>
                 <div className={`${COMPONENT_CLASS}__panel`}>
                     <NestedRoutes
-                        isAuthenticated={false}
+                        isAuthenticated={authContext.authenticated ?? false}
                         redirectToIfNotFound={siteMap.errors.notFound}
-                        redirectToIfUnauthenticated={siteMap.errors.accessDenied}
+                        redirectToIfUnauthenticated={siteMap.auth.login}
                         routes={props.routes}
                     />
                 </div>
