@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { LabeledInput, LabeledInputProperties } from './labeled-input';
+import { Formik } from "formik";
 
 export default {
   title: "Molecules/Labeled Input",
@@ -8,7 +9,10 @@ export default {
   argTypes: {},
 } as Meta;
 
-const Template: Story<LabeledInputProperties> = (args) => <LabeledInput {...args} />;
+const Template: Story<LabeledInputProperties> = (args) =>
+  <Formik onSubmit={() => {}} initialValues={{value: ""}}>
+    <LabeledInput {...args} />
+  </Formik>
 
 export const Email = Template.bind({});
 Email.args = {
