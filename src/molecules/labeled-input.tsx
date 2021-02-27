@@ -18,7 +18,7 @@ export const LabeledInput: React.FC<LabeledInputProperties> = (props) => {
                     {props.label}
             </label>
             <Field
-                class="form-control"
+                className="form-control"
                 id={props.htmlId}
                 name={props.htmlId}
                 type={props.inputType}
