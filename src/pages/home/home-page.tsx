@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import firebase from "firebase-init";
 import "firebase/firestore";
+import EventsService from "services/events-service";
 
 const HomePage: React.FC = () => {
     const history = useHistory();
@@ -17,9 +18,17 @@ const HomePage: React.FC = () => {
             });
     };
 
+    const getEvents = (
+        event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
+        event.preventDefault();
+        EventsService.getEvents();
+    };
+
     return (
         <div style={{ textAlign: "center" }}>
             <h1>Home</h1>
+            <button onClick={getEvents}>Get Events</button>
             <button onClick={handleClick}>Logout</button>
         </div>
     );
