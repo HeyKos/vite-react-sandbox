@@ -1,37 +1,44 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import firebase from "firebase-init";
-import "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import EventsService from "services/events-service";
+import { EventModel } from "interfaces/event-model";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const HomePage: React.FC = () => {
-    const history = useHistory();
-    const handleClick = (
-        event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-        event.preventDefault();
-        firebase
-            .auth()
-            .signOut()
-            .then(() => {
-                history.push("/auth/login");
-            });
-    };
-
-    const getEvents = async (
-        event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-        event.preventDefault();
-        const events = await EventsService.getEvents();
-        events.map((event) => console.log("my event", event));
-    };
+    const [events, setEvents] = useState(null as EventModel[] | null);
+    useEffect(() => {
+        EventsService.getEvents().then((events) => {
+            setEvents(events);
+        });
+    }, []);
 
     return (
-        <div style={{ textAlign: "center" }}>
-            <h1>Home</h1>
-            <button onClick={getEvents}>Get Events</button>
-            <button onClick={handleClick}>Logout</button>
-        </div>
+        <Container>
+            <Row>
+                <Col>
+                    <h1>Login</h1>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <h2>Events</h2>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    {!events ||
+                        (events.length === 0 && <h3>No Events Found!</h3>)}
+                    {events && events.length > 0 && (
+                        <ul>
+                            {events.map((evt) => (
+                                <li key={evt.id}>{evt.id}</li>
+                            ))}
+                        </ul>
+                    )}
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

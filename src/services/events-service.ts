@@ -1,15 +1,10 @@
 import firebase from "firebase-init";
 import "firebase/firestore";
+import { EventModel } from "interfaces/event-model";
 
 // -----------------------------------------------------------------------------------------
 // #region Functions
-// -----------------------------------------------------------------------------------------
-
-interface EventModel {
-    date: Date;
-    id: string;
-    status: number;
-}
+// -----------------------------------------------------------------------------------------}
 
 function toDateTime(secs: number): Date {
     const t = new Date(1970, 0, 1); // Epoch
