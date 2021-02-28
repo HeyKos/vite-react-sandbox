@@ -54,7 +54,7 @@ const Login: React.FC = () => {
         <Container>
           <Row>
             <Col>
-              <p>Don't have an account yet?</p>
+              <p>Don&apos;t have an account yet?</p>
             </Col>
           </Row>
           <Row>

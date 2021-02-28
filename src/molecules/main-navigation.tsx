@@ -11,15 +11,13 @@ export interface MainNavigationProperties {
 
 const COMPONENT_CLASS = "c-main-navigation";
 
-export const MainNavigation: React.FC<MainNavigationProperties> = (props) => {
-  return (
+export const MainNavigation: React.FC<MainNavigationProperties> = (props: MainNavigationProperties) =>
     <Navbar
       className={`${COMPONENT_CLASS} d-flex`}
       bg="light"
       expand="lg"
       variant="light"
-      sticky="top"
-    >
+      sticky="top">
       <Navbar.Brand href="/" className="p-2">
         <Image
           src="/src/assets/images/splash_image.png"
@@ -37,7 +35,5 @@ export const MainNavigation: React.FC<MainNavigationProperties> = (props) => {
         {props.user == null && <span>Login</span>}
       </div>
     </Navbar>
-  );
-};
 
 export default MainNavigation;

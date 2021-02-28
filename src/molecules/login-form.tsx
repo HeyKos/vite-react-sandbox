@@ -15,7 +15,7 @@ export interface LoginFormProperties {
   onSubmit: (values: LoginFormData) => void;
 }
 
-const LoginForm: React.FC<LoginFormProperties> = (props) => {
+const LoginForm: React.FC<LoginFormProperties> = (props: LoginFormProperties) => {
   const initialValues: LoginFormData = {
     email: "",
     password: "",

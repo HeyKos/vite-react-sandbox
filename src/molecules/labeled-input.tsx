@@ -8,7 +8,7 @@ export interface LabeledInputProperties {
   placeholderText: string;
 }
 
-export const LabeledInput: React.FC<LabeledInputProperties> = (props) => {
+export const LabeledInput: React.FC<LabeledInputProperties> = (props: LabeledInputProperties) => {
   return (
     <div className="form-group">
       <label className="form-label" htmlFor={props.htmlId}>
