@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Formik, FormikHelpers } from "formik";
+import { Form, Formik } from "formik";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -26,7 +26,6 @@ const LoginForm: React.FC<LoginFormProperties> = (props) => {
       initialValues={initialValues}
       onSubmit={(
         values: LoginFormData,
-        { setSubmitting }: FormikHelpers<LoginFormData>
       ) => {
         props.onSubmit(values);
       }}
@@ -36,9 +35,9 @@ const LoginForm: React.FC<LoginFormProperties> = (props) => {
           <Row xs={1} md={2} lg={2}>
             <Col>
               <LabeledInput
-          htmlId="email"
-              inputType="email"
-  label="Email Address"
+                htmlId="email"
+                inputType="email"
+                label="Email Address"
                 placeholderText="Enter your email"
               />
             </Col>

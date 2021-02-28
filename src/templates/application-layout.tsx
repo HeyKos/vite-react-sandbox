@@ -5,18 +5,10 @@ import { AuthContext } from "AuthProvider";
 import "./application-layout.scss";
 import MainNavigation from "molecules/main-navigation";
 
-// -----------------------------------------------------------------------------------------
-// #region Constants
-// -----------------------------------------------------------------------------------------
 
 const COMPONENT_CLASS = "c-application-layout";
 
-// #endregion Constants
-
-// ---------------------------------------------------------------------------------------------
-// #region Component
-// ---------------------------------------------------------------------------------------------
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ApplicationLayout: React.FC<any> = (props: any) => {
   const authContext = useContext(AuthContext);
   return (
@@ -34,12 +26,4 @@ const ApplicationLayout: React.FC<any> = (props: any) => {
   );
 };
 
-// #endregion Component
-
-// -----------------------------------------------------------------------------------------
-// #region Exports
-// -----------------------------------------------------------------------------------------
-
 export default ApplicationLayout;
-
-// #endregion Exports

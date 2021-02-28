@@ -1,10 +1,6 @@
 import * as React from "react";
 
-interface AccessDeniedPageProps {}
-
-const AccessDeniedPage: React.FunctionComponent<AccessDeniedPageProps> = (
-  props
-) => {
+const AccessDeniedPage: React.FunctionComponent = () => {
   return (
     <React.Fragment>
       <main className="c-access-denied-page">

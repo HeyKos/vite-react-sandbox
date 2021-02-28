@@ -10,6 +10,7 @@ export default {
 } as Meta;
 
 const Template: Story<LabeledInputProperties> = (args) => (
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   <Formik onSubmit={() => {}} initialValues={{ value: "" }}>
     <LabeledInput {...args} />
   </Formik>

@@ -16,7 +16,7 @@ interface LoginData {
   password: string;
 }
 
-const Login = () => {
+const Login: React.FC = () => {
   const authContext = useContext(AuthContext);
   const history = useHistory();
 
@@ -35,7 +35,10 @@ const Login = () => {
     }
 
     console.log("Logged in!", res.user);
-    authContext.setUser(res.user);
+    if (authContext && authContext.setUser) {
+      authContext.setUser(res.user);
+    }
+
     history.push(siteMap.root);
   };
 

@@ -4,13 +4,14 @@ import firebase from "firebase-init";
 type ContextProps = {
   user: firebase.User | null;
   authenticated: boolean;
-  setUser: any;
+  setUser: React.Dispatch<React.SetStateAction<firebase.User | null>>;
   loadingAuthState: boolean;
 };
 
 export const AuthContext = React.createContext<Partial<ContextProps>>({});
 
-export const AuthProvider = ({ children }: any) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const AuthProvider: React.FC = ({ children }: any) => {
   const [user, setUser] = useState(null as firebase.User | null);
   const [loadingAuthState, setLoadingAuthState] = useState(true);
   const providerContextProps = {
@@ -21,7 +22,7 @@ export const AuthProvider = ({ children }: any) => {
   };
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user: any) => {
+    firebase.auth().onAuthStateChanged((user: firebase.User | null) => {
       setUser(user);
       setLoadingAuthState(false);
     });

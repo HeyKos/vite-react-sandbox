@@ -12,7 +12,7 @@ interface FormItems {
   password: string;
 }
 
-const SignUpPage = () => {
+const SignUpPage: React.FC = () => {
   const authContext = useContext(AuthContext);
   const [values, setValues] = useState({
     username: "",
@@ -25,7 +25,7 @@ const SignUpPage = () => {
   const handleClick = () => {
     history.push("/auth/login");
   };
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.persist();
     setValues((values) => ({
       ...values,
@@ -33,17 +33,20 @@ const SignUpPage = () => {
     }));
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event?.preventDefault();
     console.log(values, "values");
     firebase
       .auth()
       .createUserWithEmailAndPassword(values.email, values.password)
       .then((userCredential: firebase.auth.UserCredential) => {
-        authContext.setUser(userCredential);
+        if (authContext && authContext.setUser) {
+          authContext.setUser(userCredential.user);
+        }
+
         const db = firebase.firestore();
         db.collection("Users")
-          .doc(userCredential.user!.uid)
+          .doc(userCredential.user?.uid)
           .set({
             email: values.email,
             username: values.username,

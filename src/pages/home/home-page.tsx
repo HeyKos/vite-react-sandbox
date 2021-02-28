@@ -3,14 +3,14 @@ import { useHistory } from "react-router-dom";
 import firebase from "firebase-init";
 import "firebase/firestore";
 
-const HomePage = () => {
+const HomePage: React.FC  = () => {
   const history = useHistory();
-  const handleClick = (event: any) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
     firebase
       .auth()
       .signOut()
-      .then((res) => {
+      .then(() => {
         history.push("/auth/login");
       });
   };
