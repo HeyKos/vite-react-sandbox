@@ -18,11 +18,12 @@ const HomePage: React.FC = () => {
             });
     };
 
-    const getEvents = (
+    const getEvents = async (
         event: React.MouseEvent<HTMLButtonElement, MouseEvent>
     ) => {
         event.preventDefault();
-        EventsService.getEvents();
+        const events = await EventsService.getEvents();
+        events.map((event) => console.log("my event", event));
     };
 
     return (

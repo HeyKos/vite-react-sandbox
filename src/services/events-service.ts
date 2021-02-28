@@ -5,13 +5,39 @@ import "firebase/firestore";
 // #region Functions
 // -----------------------------------------------------------------------------------------
 
-const getEvents = async (): Promise<void> => {
+interface EventModel {
+    date: Date;
+    id: string;
+    status: number;
+}
+
+function toDateTime(secs: number): Date {
+    const t = new Date(1970, 0, 1); // Epoch
+    t.setSeconds(secs);
+    return t;
+}
+
+const getEvents = async (): Promise<EventModel[]> => {
     const db = firebase.firestore();
     const querySnapshot = await db.collection("events").get();
     console.log("querySnapshot", querySnapshot);
+    if (querySnapshot == null) {
+        return [];
+    }
+    if (querySnapshot.docs == null || querySnapshot.docs.length === 0) {
+        return [];
+    }
+    const events: EventModel[] = [];
     querySnapshot.docs.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
+        const data = doc.data();
+        const event: EventModel = {
+            date: toDateTime(data.date.seconds),
+            id: doc.id,
+            status: data.status,
+        };
+        events.push(event);
     });
+    return events;
 };
 
 // #endregion Functions
