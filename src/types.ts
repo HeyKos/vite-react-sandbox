@@ -1,4 +1,4 @@
-import { ApiResult as ApiResultEnum } from "./enums";
+import { ApiResult as ApiResultEnum, ApiMethod as ApiMethodEnum } from "enums";
 
 // -----------------------------------------------------------------------------------------
 // #region API Types
@@ -14,7 +14,7 @@ export type ApiHeader = {
     value: string;
 };
 
-export type ApiMethod = "POST" | "GET";
+export type ApiMethod = ApiMethodEnum.POST | ApiMethodEnum.GET;
 
 export type ApiResponse<T> = {
     Result: ApiResult;
