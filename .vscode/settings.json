@@ -13,5 +13,5 @@
     "editor.rulers": [100],
     "prettier.requireConfig": true,
     "trailing-spaces.trimOnSave": true,
-    "typescript.preferences.quoteStyle": "double",
+    "typescript.preferences.quoteStyle": "double"
 }

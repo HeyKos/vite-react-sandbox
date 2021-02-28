@@ -8,38 +8,38 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { AuthContext, AuthProvider } from "AuthProvider";
 
 const App: React.FC = () => {
-  const routeArray = CoreUtils.objectToArray(routes);
-  const { loadingAuthState, authenticated } = useContext(AuthContext);
+    const routeArray = CoreUtils.objectToArray(routes);
+    const { loadingAuthState, authenticated } = useContext(AuthContext);
 
-  if (loadingAuthState) {
+    if (loadingAuthState) {
+        return (
+            <div>
+                <h1>Loading...</h1>
+            </div>
+        );
+    }
+
     return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    );
-  }
-
-  return (
-    <AuthProvider>
-      <Router>
-        <React.Fragment>
-          {/*
+        <AuthProvider>
+            <Router>
+                <React.Fragment>
+                    {/*
           ------------------------------------------------------------------------------------------
           Main Content
           ------------------------------------------------------------------------------------------
           */}
-          <Switch>
-            <NestedRoutes
-              isAuthenticated={authenticated ?? false}
-              redirectToIfNotFound={siteMap.errors.notFound}
-              redirectToIfUnauthenticated={siteMap.auth.login}
-              routes={routeArray}
-            />
-          </Switch>
-        </React.Fragment>
-      </Router>
-    </AuthProvider>
-  );
+                    <Switch>
+                        <NestedRoutes
+                            isAuthenticated={authenticated ?? false}
+                            redirectToIfNotFound={siteMap.errors.notFound}
+                            redirectToIfUnauthenticated={siteMap.auth.login}
+                            routes={routeArray}
+                        />
+                    </Switch>
+                </React.Fragment>
+            </Router>
+        </AuthProvider>
+    );
 };
 
 export default App;
