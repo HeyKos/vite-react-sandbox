@@ -35,7 +35,6 @@ const SignUpPage: React.FC = () => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event?.preventDefault();
-        console.log(values, "values");
         firebase
             .auth()
             .createUserWithEmailAndPassword(values.email, values.password)
@@ -53,11 +52,10 @@ const SignUpPage: React.FC = () => {
                         phone: values.phone,
                     })
                     .then(() => {
-                        console.log("ok");
                         history.push("/");
                     })
                     .catch((error) => {
-                        console.log(error.message);
+                        console.error(error.message);
                         alert(error.message);
                     });
             });

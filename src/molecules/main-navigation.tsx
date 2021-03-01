@@ -1,6 +1,5 @@
 import React from "react";
-import firebase from "firebase-init";
-import "firebase/firestore";
+import firebase from "firebase/app";
 import "./main-navigation.scss";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";

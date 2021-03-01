@@ -15,7 +15,6 @@ function toDateTime(secs: number): Date {
 const getEvents = async (): Promise<EventModel[]> => {
     const db = firebase.firestore();
     const querySnapshot = await db.collection("events").get();
-    console.log("querySnapshot", querySnapshot);
     if (querySnapshot == null) {
         return [];
     }

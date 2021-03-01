@@ -34,7 +34,6 @@ const Login: React.FC = () => {
             return;
         }
 
-        console.log("Logged in!", res.user);
         if (authContext && authContext.setUser) {
             authContext.setUser(res.user);
         }
