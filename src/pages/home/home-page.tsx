@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import { List } from "immutable";
 import EventRecord from "models/view-models/event-record";
 import { useLoadEvents } from "utilities/debug/useLoadEvents";
+import { EventsList } from "molecules/events-list";
 
 const HomePage: React.FC = () => {
     // -----------------------------------------------------------------------------------------
@@ -30,18 +31,7 @@ const HomePage: React.FC = () => {
             </Row>
             <Row>
                 <Col>
-                    {!events ||
-                        (events.size === 0 && <h3>No Events Found!</h3>)}
-                    {events && events.size > 0 && (
-                        <ul>
-                            {events.map((evt) => (
-                                <li
-                                    key={
-                                        evt.id
-                                    }>{`Event Id: ${evt.id} | User: ${evt.user?.name}`}</li>
-                            ))}
-                        </ul>
-                    )}
+                    <EventsList events={events} />
                 </Col>
             </Row>
         </Container>
