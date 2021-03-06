@@ -1,36 +1,32 @@
 import firebase from "firebase-init";
 import "firebase/firestore";
-import { EventModel } from "interfaces/event-model";
+import { List } from "immutable";
+import EventRecord from "models/view-models/event-record";
+import EventConverter from "utilities/converters/event-converter";
 
 // -----------------------------------------------------------------------------------------
 // #region Functions
 // -----------------------------------------------------------------------------------------}
 
-function toDateTime(secs: number): Date {
-    const t = new Date(1970, 0, 1); // Epoch
-    t.setSeconds(secs);
-    return t;
-}
-
-const getEvents = async (): Promise<EventModel[]> => {
+const getEvents = async (): Promise<List<EventRecord>> => {
     const db = firebase.firestore();
-    const querySnapshot = await db.collection("events").get();
+    let events: List<EventRecord> = List<EventRecord>();
+    const querySnapshot = await db
+        .collection("events")
+        .withConverter(EventConverter)
+        .get();
+
     if (querySnapshot == null) {
-        return [];
+        return events;
     }
     if (querySnapshot.docs == null || querySnapshot.docs.length === 0) {
-        return [];
+        return events;
     }
-    const events: EventModel[] = [];
+
     querySnapshot.docs.forEach((doc) => {
-        const data = doc.data();
-        const event: EventModel = {
-            date: toDateTime(data.date.seconds),
-            id: doc.id,
-            status: data.status,
-        };
-        events.push(event);
+        events = events.push(doc.data());
     });
+
     return events;
 };
 

@@ -1,5 +1,5 @@
 export interface EventModel {
-    date: Date;
+    date: Date | undefined;
     id: string;
     status: number;
 }
