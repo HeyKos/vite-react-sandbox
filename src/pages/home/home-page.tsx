@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
-import EventsService from "services/events-service";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { List } from "immutable";
 import EventRecord from "models/view-models/event-record";
+import { useLoadEvents } from "utilities/debug/useLoadEvents";
 
 const HomePage: React.FC = () => {
+    // -----------------------------------------------------------------------------------------
+    // #region Functions
+    // -----------------------------------------------------------------------------------------
+
     const [events, setEvents] = useState(null as List<EventRecord> | null);
-    useEffect(() => {
-        EventsService.getEvents().then((events) => {
-            setEvents(events);
-        });
-    }, []);
+    useLoadEvents(setEvents);
+
+    // #endregion Functions
 
     return (
         <Container>
@@ -33,7 +35,10 @@ const HomePage: React.FC = () => {
                     {events && events.size > 0 && (
                         <ul>
                             {events.map((evt) => (
-                                <li key={evt.id}>{evt.id}</li>
+                                <li
+                                    key={
+                                        evt.id
+                                    }>{`Event Id: ${evt.id} | User: ${evt.user?.name}`}</li>
                             ))}
                         </ul>
                     )}

@@ -1,7 +1,7 @@
 import "firebase/firestore";
 import firebase from "firebase-init";
-import EventRecord from "models/view-models/event-record";
 import DateUtils from "utilities/date-utils";
+import UserRecord from "models/view-models/user-record";
 
 // -----------------------------------------------------------------------------------------
 // #region Types
@@ -10,7 +10,7 @@ import DateUtils from "utilities/date-utils";
 type DocumentData = firebase.firestore.DocumentData;
 type QueryDocumentSnapshot = firebase.firestore.QueryDocumentSnapshot;
 type SnapshotOptions = firebase.firestore.SnapshotOptions;
-type FirestoreDataConverter = firebase.firestore.FirestoreDataConverter<EventRecord>;
+type FirestoreDataConverter = firebase.firestore.FirestoreDataConverter<UserRecord>;
 
 // #endregion Types
 
@@ -21,22 +21,28 @@ type FirestoreDataConverter = firebase.firestore.FirestoreDataConverter<EventRec
 function fromFirestore(
     snapshot: QueryDocumentSnapshot,
     options: SnapshotOptions
-): EventRecord {
+): UserRecord {
     const data = snapshot.data(options);
-
-    return new EventRecord({
-        date: DateUtils.fromSeconds(data.date.seconds),
+    return new UserRecord({
+        avatarPath: data.avatarPath,
+        isActive: data.isActive,
         id: snapshot.id,
-        status: data.status,
-        userReference: data.hostUser.path,
+        lastHostedOn: DateUtils.fromSeconds(data.lastHostedOn.seconds),
+        name: data.name,
+        sequence: data.sequence,
+        uid: data.uid,
     });
 }
 
-function toFirestore(event: EventRecord): DocumentData {
+function toFirestore(user: UserRecord): DocumentData {
     return {
-        date: event.date,
-        id: event.id,
-        status: event.status,
+        avatarPath: user.avatarPath,
+        isActive: user.isActive,
+        id: user.id,
+        lastHostedOn: user.lastHostedOn,
+        name: user.name,
+        sequence: user.sequence,
+        uid: user.uid,
     };
 }
 
@@ -46,11 +52,11 @@ function toFirestore(event: EventRecord): DocumentData {
 // #region Exports
 // -----------------------------------------------------------------------------------------
 
-const EventConverter: FirestoreDataConverter = {
+const UserConverter: FirestoreDataConverter = {
     fromFirestore,
     toFirestore,
 };
 
-export default EventConverter;
+export default UserConverter;
 
 // #endregion Exports

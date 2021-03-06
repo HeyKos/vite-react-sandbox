@@ -5,6 +5,8 @@ const defaultValues: EventModel = {
     date: undefined,
     id: "",
     status: 0,
+    user: undefined,
+    userReference: "",
 };
 
 export default class EventRecord
