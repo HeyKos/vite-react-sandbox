@@ -6,6 +6,7 @@ import { List } from "immutable";
 import EventRecord from "models/view-models/event-record";
 import { useLoadEvents } from "utilities/debug/useLoadEvents";
 import { EventsList } from "molecules/events-list";
+import { useLoadEventAvatars } from "utilities/debug/useLoadEventAvatars";
 
 const HomePage: React.FC = () => {
     // -----------------------------------------------------------------------------------------
@@ -14,6 +15,7 @@ const HomePage: React.FC = () => {
 
     const [events, setEvents] = useState(null as List<EventRecord> | null);
     useLoadEvents(setEvents);
+    useLoadEventAvatars(events, setEvents);
 
     // #endregion Functions
 

@@ -3,6 +3,7 @@ import { UserModel } from "models/interfaces/user-model";
 
 const defaultValues: UserModel = {
     avatarPath: "",
+    avatarUrl: "",
     id: "",
     isActive: false,
     lastHostedOn: undefined,

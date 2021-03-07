@@ -24,6 +24,7 @@ WithData.args = {
             status: 0,
             user: new UserRecord({
                 avatarPath: "",
+                avatarUrl: "https://placehold.it/50x50",
                 id: "123456",
                 isActive: true,
                 lastHostedOn: new Date(),
@@ -39,6 +40,7 @@ WithData.args = {
             status: 0,
             user: new UserRecord({
                 avatarPath: "",
+                avatarUrl: "https://placehold.it/50x50",
                 id: "234567",
                 isActive: true,
                 lastHostedOn: new Date(),
@@ -54,6 +56,7 @@ WithData.args = {
             status: 0,
             user: new UserRecord({
                 avatarPath: "",
+                avatarUrl: "https://placehold.it/50x50",
                 id: "345678",
                 isActive: true,
                 lastHostedOn: new Date(),
