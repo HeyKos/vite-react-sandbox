@@ -16,7 +16,7 @@ export const EventsList: React.FC<EventsListProperties> = (
         <>
             {!hasEvents && <h3>No Events Found!</h3>}
             {hasEvents && (
-                <Table variant="dark" responsive striped bordered>
+                <Table variant="dark" responsive striped bordered hover>
                     <thead>
                         <tr>
                             <th>Date</th>

@@ -7,6 +7,6 @@ export default {
     component: LoginForm,
 } as Meta;
 
-export const LoginFormTemplate: Story<LoginFormProperties> = (args) => (
+export const Default: Story<LoginFormProperties> = (args) => (
     <LoginForm {...args} />
 );
