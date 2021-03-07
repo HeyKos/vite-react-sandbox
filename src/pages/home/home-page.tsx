@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
         <Container>
             <Row>
                 <Col>
-                    <h1>Login</h1>
+                    <h1>Home</h1>
                 </Col>
             </Row>
             <Row>

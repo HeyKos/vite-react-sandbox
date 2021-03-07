@@ -20,7 +20,7 @@ const getFromPath = async (
         return undefined;
     }
 
-    return documentSnapshot.data();
+    return documentSnapshot.data() as UserRecord;
 };
 
 // #endregion Functions

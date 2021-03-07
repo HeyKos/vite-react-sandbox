@@ -35,6 +35,7 @@
         "andculturecode-javascript-core": "^0.5.1",
         "andculturecode-javascript-react": "^0.3.3",
         "babel-loader": "^8.2.2",
+        "babel-plugin-transform-import-meta": "^1.0.1",
         "css-loader": "^5.1.0",
         "eslint": "^7.21.0",
         "eslint-config-prettier": "^8.1.0",
@@ -46,5 +47,10 @@
         "typescript": "4.1.4",
         "vite": "^2.0.1",
         "vite-tsconfig-paths": "^2.1.0"
+    },
+    "babel": {
+        "plugins": [
+            "babel-plugin-transform-import-meta"
+        ]
     }
 }

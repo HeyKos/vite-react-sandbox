@@ -24,7 +24,7 @@ const getEvents = async (): Promise<List<EventRecord>> => {
     }
 
     querySnapshot.docs.forEach((doc) => {
-        events = events.push(doc.data());
+        events = events.push(doc.data() as EventRecord);
     });
 
     return events;
