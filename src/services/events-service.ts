@@ -9,8 +9,11 @@ import EventConverter from "utilities/converters/event-converter";
 // -----------------------------------------------------------------------------------------}
 
 const getEvents = async (): Promise<List<EventRecord>> => {
-    const db = firebase.firestore();
     let events: List<EventRecord> = List<EventRecord>();
+    if (firebase == null) {
+        return events;
+    }
+    const db = firebase.firestore();
     const querySnapshot = await db
         .collection("events")
         .withConverter(EventConverter)
