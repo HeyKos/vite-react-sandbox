@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import firebase from "firebase-init";
+import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import { AuthContext } from "AuthProvider";
@@ -16,7 +16,7 @@ interface LoginData {
     password: string;
 }
 
-const Login: React.FC = () => {
+const LoginPage: React.FC = () => {
     const authContext = useContext(AuthContext);
     const history = useHistory();
 
@@ -67,4 +67,4 @@ const Login: React.FC = () => {
     );
 };
 
-export default Login;
+export default LoginPage;

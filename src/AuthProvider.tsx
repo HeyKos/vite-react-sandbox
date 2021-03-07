@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import firebase from "firebase-init";
+import firebase from "firebase/app";
 
 type ContextProps = {
     user: firebase.User | null;
