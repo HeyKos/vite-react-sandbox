@@ -23,6 +23,11 @@ const LoginPage: React.FC = () => {
     const handleClick = () => history.push(siteMap.auth.signup);
 
     const handleSubmit = async (values: LoginData) => {
+        if (firebase == null) {
+            // TODO: Show error message.
+            return;
+        }
+
         const res = await firebase
             .auth()
             .signInWithEmailAndPassword(values.email, values.password)
