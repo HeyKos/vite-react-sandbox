@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -10,14 +10,24 @@ import { useLoadEventAvatars } from "utilities/hooks/useLoadEventAvatars";
 
 const HomePage: React.FC = () => {
     // -----------------------------------------------------------------------------------------
-    // #region Functions
+    // #region Hooks
     // -----------------------------------------------------------------------------------------
 
     const [events, setEvents] = useState(null as List<EventRecord> | null);
+    const [isLoading, setIsLoading] = useState(true);
     useLoadEvents(setEvents);
     useLoadEventAvatars(events, setEvents);
+    useEffect(
+        function checkIfLoading() {
+            if (events == null || events.size === 0) {
+                return;
+            }
+            setIsLoading(false);
+        },
+        [events]
+    );
 
-    // #endregion Functions
+    // #endregion Hooks
 
     return (
         <Container>
@@ -33,7 +43,7 @@ const HomePage: React.FC = () => {
             </Row>
             <Row>
                 <Col>
-                    <EventsList events={events} />
+                    <EventsList events={events} isLoading={isLoading} />
                 </Col>
             </Row>
         </Container>
