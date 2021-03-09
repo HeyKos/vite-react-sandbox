@@ -4,9 +4,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { List } from "immutable";
 import EventRecord from "models/view-models/event-record";
-import { useLoadEvents } from "utilities/debug/useLoadEvents";
+import { useLoadEvents } from "utilities/hooks/useLoadEvents";
 import { EventsList } from "molecules/events-list";
-import { useLoadEventAvatars } from "utilities/debug/useLoadEventAvatars";
+import { useLoadEventAvatars } from "utilities/hooks/useLoadEventAvatars";
 
 const HomePage: React.FC = () => {
     // -----------------------------------------------------------------------------------------
