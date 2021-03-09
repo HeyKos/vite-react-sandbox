@@ -5,7 +5,9 @@ import { useRef } from "react";
  * @param  {string} componentName The name of the component that you want to track renders on.
  * @returns void
  */
-export function useRendersCount(componentName: string): void {
+export function useRendersCount(componentName: string): number {
     const renders = useRef(1);
-    console.log(`Number of renders on ${componentName}: ${renders.current++}`);
+    const count = renders.current++;
+    console.log(`Number of renders on ${componentName}: ${count}`);
+    return count;
 }
