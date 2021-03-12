@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import firebase from "firebase-init";
+import { AuthenticationContextProperties } from "types";
 
-type ContextProps = {
-    user: firebase.User | null;
-    authenticated: boolean;
-    setUser: React.Dispatch<React.SetStateAction<firebase.User | null>>;
-    loadingAuthState: boolean;
-};
-
-export const AuthContext = React.createContext<Partial<ContextProps>>({});
+export const AuthContext = React.createContext<
+    Partial<AuthenticationContextProperties>
+>({});
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const AuthProvider: React.FC = ({ children }: any) => {

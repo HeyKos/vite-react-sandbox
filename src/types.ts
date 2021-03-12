@@ -1,4 +1,19 @@
 import { ApiResult as ApiResultEnum, ApiMethod as ApiMethodEnum } from "enums";
+import React from "react";
+import firebase from "firebase";
+
+// -----------------------------------------------------------------------------------------
+// #region Authentication
+// -----------------------------------------------------------------------------------------
+
+export type AuthenticationContextProperties = {
+    user: firebase.User | null;
+    authenticated: boolean;
+    setUser: React.Dispatch<React.SetStateAction<firebase.User | null>>;
+    loadingAuthState: boolean;
+};
+
+// #endregion Authentication
 
 // -----------------------------------------------------------------------------------------
 // #region API Types
